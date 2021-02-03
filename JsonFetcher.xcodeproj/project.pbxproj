@@ -114,8 +114,8 @@
 		600C5FCB25CAD7850013A6AC /* DetailsModule */ = {
 			isa = PBXGroup;
 			children = (
-				600C5FC525CAD77A0013A6AC /* DetailsViewModel.swift */,
 				600C5FC825CAD7820013A6AC /* DetailsViewController.swift */,
+				600C5FC525CAD77A0013A6AC /* DetailsViewModel.swift */,
 			);
 			path = DetailsModule;
 			sourceTree = "<group>";

@@ -14,8 +14,7 @@ class DetailsViewController: UIViewController {
     private var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false 
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 

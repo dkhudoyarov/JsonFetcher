@@ -11,11 +11,10 @@ class PictureTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let cellId = "PictureTableViewCell"
-    
     var viewModel: CellViewModelProtocol!
     
-    var pictureImageView: UIImageView = {
-        let image = UIImageView()
+    private lazy var pictureImageView: WebImageView = {
+        let image = WebImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image
@@ -23,7 +22,7 @@ class PictureTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupContraits()
+        setupConstraits()
         updateCell()
     }
     
@@ -32,12 +31,13 @@ class PictureTableViewCell: UITableViewCell {
         pictureImageView.set(imageURL: viewModel.url)
     }
 
-    private func setupContraits() {
+    private func setupConstraits() {
         addSubview(pictureImageView)
-        pictureImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        pictureImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        pictureImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        pictureImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        pictureImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        pictureImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        pictureImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        pictureImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
+        pictureImageView.heightAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
     }
     
     static func register(_ tableView: UITableView) {
@@ -48,5 +48,4 @@ class PictureTableViewCell: UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PictureTableViewCell else { return PictureTableViewCell() }
         return cell
     }
-    
 }

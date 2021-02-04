@@ -1,13 +1,15 @@
 //
-//  UIImageView + Extension.swift
+//  WebImageView.swift
 //  JsonFetcher
 //
-//  Created by Денис on 03.02.2021.
+//  Created by Денис on 04.02.2021.
 //
 
 import UIKit
 
-extension UIImageView {
+class WebImageView: UIImageView {
+    
+    private var indicator = LoadingIndicator()
     
     func set(imageURL: String?) {
         guard let imageURL = imageURL, let url = URL(string: imageURL) else { return }
@@ -18,6 +20,7 @@ extension UIImageView {
             return
         }
         
+        indicator.show(for: self)
         // Load if cache is empty
         let dataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -26,6 +29,7 @@ extension UIImageView {
                 if let data = data, let response = response {
                     self.image = UIImage(data: data)
                     self.handleLoadedImage(data: data, response: response)
+                    self.indicator.hideAfter(deadline: .now() + 1)
                 }
             }
         }
@@ -39,5 +43,3 @@ extension UIImageView {
         URLCache.shared.storeCachedResponse(cachedResponse, for: URLRequest(url: responseURL))
     }
 }
-
-

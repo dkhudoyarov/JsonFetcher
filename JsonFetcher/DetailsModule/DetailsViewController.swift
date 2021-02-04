@@ -8,7 +8,8 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-        
+      
+    // MARK: - Properties
     var viewModel: DetailsViewModelProtocol!
     
     private var nameLabel: UILabel = {
@@ -25,6 +26,7 @@ class DetailsViewController: UIViewController {
         setupConstraits()
     }
     
+    // MARK: - Methods
     private func updateLabel() {
         nameLabel.text = viewModel.sectionName
     }

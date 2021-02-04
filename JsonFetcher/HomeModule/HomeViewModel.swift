@@ -12,9 +12,8 @@ protocol HomeViewModelProtocol {
     var sections: [Section]? { get }
     func fetchDataResponse(completion: @escaping () -> ())
     func numberOfRow() -> Int?
-    func getSectionForRow(at indexPath: IndexPath) -> Section?
     func tapOnSection(section: Section?)
-    func cellViewModel(at indexPath: IndexPath) -> CellViewModelProtocol?
+    func getCellFor(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell?
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
@@ -41,6 +40,46 @@ final class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
+    func numberOfRow() -> Int? {
+        return sections?.count
+    }
+    
+    func tapOnSection(section: Section?) {
+        router.showDetails(section: section)
+    }
+    
+    func getCellFor(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell? {
+        switch sections?[indexPath.row].name {
+        case "hz":
+            let cell = TextTableViewCell.dequeue(tableView, for: indexPath)
+            let cellViewModel = getCellViewModel(at: indexPath)
+            cell.viewModel = cellViewModel
+            cell.awakeFromNib()
+            return cell
+
+        case "picture":
+            let cell = PictureTableViewCell.dequeue(tableView, for: indexPath)
+            let cellViewModel = getCellViewModel(at: indexPath)
+            cell.viewModel = cellViewModel
+            cell.awakeFromNib()
+            return cell
+
+        case "selector":
+            let cell = SelectorTableViewCell.dequeue(tableView, for: indexPath)
+            let cellViewModel = getCellViewModel(at: indexPath)
+            cell.viewModel = cellViewModel
+            cell.awakeFromNib()
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    private func getCellViewModel(at indexPath: IndexPath) -> CellViewModelProtocol? {
+        let section = sections?[indexPath.row]
+        return CellViewModel(section: section)
+    }
+    
     private func getSectionsFromResponse(response: Response) -> [Section] {
         var sections = [Section]()
         response.view.forEach { view in
@@ -48,22 +87,5 @@ final class HomeViewModel: HomeViewModelProtocol {
             sections.append(section)
         }
         return sections
-    }
-    
-    func numberOfRow() -> Int? {
-        return sections?.count
-    }
-    
-    func getSectionForRow(at indexPath: IndexPath) -> Section? {
-        return sections?[indexPath.row]
-    }
-    
-    func tapOnSection(section: Section?) {
-        router.showDetails(section: section)
-    }
-    
-    func cellViewModel(at indexPath: IndexPath) -> CellViewModelProtocol? {
-        let section = sections?[indexPath.row]
-        return CellViewModel(section: section)
     }
 }

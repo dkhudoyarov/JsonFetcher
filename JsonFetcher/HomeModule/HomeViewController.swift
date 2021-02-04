@@ -31,7 +31,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         tableView.separatorStyle = .none
-        setupTable()
+        tableView.rowHeight = UITableView.automaticDimension
+        setupConstraits()
         cellRegister()
     }
     
@@ -42,7 +43,7 @@ class HomeViewController: UIViewController {
         SelectorTableViewCell.register(tableView)
     }
     
-    private func setupTable() {
+    private func setupConstraits() {
         view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -59,32 +60,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
-        switch viewModel?.sections?[indexPath.row].name {
-        case "hz":
-            let cell = TextTableViewCell.dequeue(tableView, for: indexPath)
-            let cellViewModel = viewModel?.cellViewModel(at: indexPath)
-            cell.viewModel = cellViewModel
-            cell.awakeFromNib()
-            return cell
-            
-        case "picture":
-            let cell = PictureTableViewCell.dequeue(tableView, for: indexPath)
-            let cellViewModel = viewModel?.cellViewModel(at: indexPath)
-            cell.viewModel = cellViewModel
-            cell.awakeFromNib()
-            return cell
-            
-        case "selector":
-            let cell = SelectorTableViewCell.dequeue(tableView, for: indexPath)
-            let cellViewModel = viewModel?.cellViewModel(at: indexPath)
-            cell.viewModel = cellViewModel
-            cell.awakeFromNib()
-            return cell
-        default:
-            break
-        }
-        return UITableViewCell()
+        guard let cell = viewModel?.getCellFor(tableView, at: indexPath) else { return UITableViewCell() }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

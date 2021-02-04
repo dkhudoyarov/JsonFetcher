@@ -11,7 +11,6 @@ class TextTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let cellId = "TextTableViewCell"
-    
     var viewModel: CellViewModelProtocol!
 
     private lazy var myTextLabel: UILabel = {

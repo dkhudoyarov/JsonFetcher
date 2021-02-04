@@ -22,8 +22,9 @@
 		600C5FDF25CAD8180013A6AC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600C5FDE25CAD8180013A6AC /* NetworkManager.swift */; };
 		600C5FE525CAD8670013A6AC /* PictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600C5FE425CAD8670013A6AC /* PictureTableViewCell.swift */; };
 		600C5FE925CAD87C0013A6AC /* SelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600C5FE825CAD87C0013A6AC /* SelectorTableViewCell.swift */; };
-		600C5FF925CAF2BC0013A6AC /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600C5FF825CAF2BC0013A6AC /* UIImageView + Extension.swift */; };
 		600C5FFE25CAF3860013A6AC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600C5FFD25CAF3860013A6AC /* API.swift */; };
+		6076EB7125CC441A007CAF25 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076EB7025CC441A007CAF25 /* WebImageView.swift */; };
+		6076EB7425CC442C007CAF25 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076EB7325CC442C007CAF25 /* LoadingIndicator.swift */; };
 		60DE751625CB1E5700F32DAD /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE751525CB1E5700F32DAD /* CellViewModel.swift */; };
 		60DE751E25CB253900F32DAD /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE751D25CB253900F32DAD /* TextTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -46,8 +47,9 @@
 		600C5FDE25CAD8180013A6AC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		600C5FE425CAD8670013A6AC /* PictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTableViewCell.swift; sourceTree = "<group>"; };
 		600C5FE825CAD87C0013A6AC /* SelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTableViewCell.swift; sourceTree = "<group>"; };
-		600C5FF825CAF2BC0013A6AC /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		600C5FFD25CAF3860013A6AC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		6076EB7025CC441A007CAF25 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		6076EB7325CC442C007CAF25 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		60DE751525CB1E5700F32DAD /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		60DE751D25CB253900F32DAD /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		918525AC2381A06B6FF79247 /* Pods-JsonFetcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonFetcher.release.xcconfig"; path = "Target Support Files/Pods-JsonFetcher/Pods-JsonFetcher.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,13 +90,13 @@
 		600C5FA525CAD4A80013A6AC /* JsonFetcher */ = {
 			isa = PBXGroup;
 			children = (
+				600C5FFB25CAF2EA0013A6AC /* Views */,
 				600C5FC425CAD7650013A6AC /* HomeModule */,
 				600C5FCB25CAD7850013A6AC /* DetailsModule */,
 				600C5FD625CAD7B40013A6AC /* Models */,
 				600C5FE225CAD81C0013A6AC /* Services */,
 				600C5FD825CAD7BA0013A6AC /* Router */,
 				600C5FDA25CAD7C20013A6AC /* Builder */,
-				600C5FFB25CAF2EA0013A6AC /* Extensions */,
 				600C600025CAF38B0013A6AC /* Helpers */,
 				600C600625CB161F0013A6AC /* SupportingFiles */,
 			);
@@ -163,12 +165,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		600C5FFB25CAF2EA0013A6AC /* Extensions */ = {
+		600C5FFB25CAF2EA0013A6AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				600C5FF825CAF2BC0013A6AC /* UIImageView + Extension.swift */,
+				6076EB7025CC441A007CAF25 /* WebImageView.swift */,
+				6076EB7325CC442C007CAF25 /* LoadingIndicator.swift */,
 			);
-			path = Extensions;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		600C600025CAF38B0013A6AC /* Helpers */ = {
@@ -320,7 +323,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6076EB7425CC442C007CAF25 /* LoadingIndicator.swift in Sources */,
 				600C5FA725CAD4A80013A6AC /* AppDelegate.swift in Sources */,
+				6076EB7125CC441A007CAF25 /* WebImageView.swift in Sources */,
 				600C5FA925CAD4A80013A6AC /* SceneDelegate.swift in Sources */,
 				600C5FE925CAD87C0013A6AC /* SelectorTableViewCell.swift in Sources */,
 				600C5FDF25CAD8180013A6AC /* NetworkManager.swift in Sources */,
@@ -329,7 +334,6 @@
 				600C5FFE25CAF3860013A6AC /* API.swift in Sources */,
 				600C5FBF25CAD7280013A6AC /* HomeViewController.swift in Sources */,
 				600C5FC225CAD7600013A6AC /* HomeViewModel.swift in Sources */,
-				600C5FF925CAF2BC0013A6AC /* UIImageView + Extension.swift in Sources */,
 				60DE751E25CB253900F32DAD /* TextTableViewCell.swift in Sources */,
 				600C5FD425CAD7AC0013A6AC /* Response.swift in Sources */,
 				600C5FC925CAD7820013A6AC /* DetailsViewController.swift in Sources */,

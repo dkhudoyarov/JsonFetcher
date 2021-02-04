@@ -14,6 +14,7 @@ protocol BuilderProtocol {
 
 final class ModuleBuilder: BuilderProtocol {
 
+    // MARK: - Methods
     func createHomeModule(router: RouterProtocol) -> UIViewController {
         let view = HomeViewController()
         let networkingManager: Networking = NetworkingManager()

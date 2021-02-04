@@ -19,6 +19,7 @@ protocol RouterProtocol: Routable {
 
 final class Router: RouterProtocol {
     
+    // MARK: - Properties
     var navigationController: UINavigationController?
     var builder: BuilderProtocol?
     
@@ -27,6 +28,7 @@ final class Router: RouterProtocol {
         self.builder = builder
     }
     
+    // MARK: - Methods
     func initialViewController() {
         if let navigationController = navigationController {
             guard let homeVC = builder?.createHomeModule(router: self) else { return }

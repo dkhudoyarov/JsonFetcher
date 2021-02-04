@@ -22,6 +22,15 @@ class SelectorTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    private func getTitles(from section: Section?) -> [String]? {
+        section?.data.variants?.compactMap { $0.text }
+    }
+    
+    private func getId(from section: Section?) -> Int? {
+        return section?.data.variants?
+            .firstIndex(where: { $0.id == section?.data.selectedID })
+    }
+    
     private func updateCell() {
         selector = UISegmentedControl(items: viewModel.titles)
         selector.selectedSegmentIndex = viewModel.selectedID ?? 0
